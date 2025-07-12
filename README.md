@@ -193,6 +193,20 @@ rewear/
 6. **Open your browser**
    Navigate to [http://localhost:3000](http://localhost:3000)
 
+## 👨‍💼 **Test Admin Access**
+
+To test the admin functionality, you can use these pre-configured admin credentials:
+
+**Email:** `admin@gmail.com`  
+**Password:** `admin123`
+
+After logging in with these credentials, you will be automatically redirected to the admin dashboard at `/admin` where you can:
+- View platform statistics
+- Moderate items (approve/reject/delete)
+- Manage users
+- Oversee swaps
+- Access all administrative features
+
 ## 📡 API Endpoints
 
 ### Authentication
