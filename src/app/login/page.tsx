@@ -27,7 +27,22 @@ export default function LoginPage() {
     if (result?.error) {
       setError("Invalid email or password");
     } else {
-      router.push("/"); // Redirect to landing page (Screen 3)
+      // Fetch user data to check role
+      try {
+        const response = await fetch('/api/user/dashboard');
+        if (response.ok) {
+          const userData = await response.json();
+          if (userData.user?.role === 'ADMIN') {
+            router.push("/admin"); // Redirect admin to admin page
+          } else {
+            router.push("/"); // Redirect regular users to landing page
+          }
+        } else {
+          router.push("/"); // Fallback to landing page
+        }
+      } catch (error) {
+        router.push("/"); // Fallback to landing page
+      }
     }
     setLoading(false);
   };

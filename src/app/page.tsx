@@ -3,8 +3,9 @@
 import Link from 'next/link'
 import { Button } from '@/components/ui/Button'
 import { Header } from '@/components/Header'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { useSession } from 'next-auth/react'
+import { useRouter } from 'next/navigation'
 import { FeaturedItems } from '@/components/FeaturedItems'
 import { 
   Leaf, 
@@ -338,7 +339,50 @@ function UserLanding() {
 }
 
 export default function HomePage() {
-  const { data: session } = useSession()
+  const { data: session, status } = useSession()
+  const [userRole, setUserRole] = useState<string | null>(null)
+  const [isLoading, setIsLoading] = useState(true)
+  const router = useRouter()
+
+  useEffect(() => {
+    if (status === 'loading') return
+
+    if (session?.user) {
+      // Fetch user data to check role
+      fetch('/api/user/dashboard')
+        .then(response => response.json())
+        .then(data => {
+          setUserRole(data.user?.role)
+          setIsLoading(false)
+          
+          // Redirect admin users to admin page
+          if (data.user?.role === 'ADMIN') {
+            router.push('/admin')
+          }
+        })
+        .catch(() => {
+          setIsLoading(false)
+        })
+    } else {
+      setIsLoading(false)
+    }
+  }, [session, status, router])
+
+  if (isLoading) {
+    return (
+      <div className="min-h-screen flex items-center justify-center">
+        <div className="text-center">
+          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-primary-600 mx-auto"></div>
+          <p className="mt-4 text-gray-600">Loading...</p>
+        </div>
+      </div>
+    )
+  }
+
+  // If user is admin, don't render anything as they'll be redirected
+  if (userRole === 'ADMIN') {
+    return null
+  }
   
   return session?.user ? <UserLanding /> : <PublicLanding />
 } 
