@@ -3,6 +3,8 @@ import { getServerSession } from 'next-auth'
 import { authOptions } from '@/lib/auth'
 import { prisma } from '@/lib/prisma'
 
+export const dynamic = 'force-dynamic'
+
 export async function GET(request: NextRequest) {
   try {
     const session = await getServerSession(authOptions)
@@ -22,7 +24,7 @@ export async function GET(request: NextRequest) {
     const skip = (page - 1) * limit
 
     const whereClause: {
-      status?: string;
+      status?: 'PENDING' | 'APPROVED' | 'REJECTED';
       OR?: Array<{
         title?: { contains: string; mode: 'insensitive' };
         description?: { contains: string; mode: 'insensitive' };
@@ -34,7 +36,7 @@ export async function GET(request: NextRequest) {
     } = {}
     
     if (status && status !== 'ALL') {
-      whereClause.status = status
+      whereClause.status = status as 'PENDING' | 'APPROVED' | 'REJECTED'
     }
     
     if (search) {
