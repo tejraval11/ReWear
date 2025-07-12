@@ -1,5 +1,13 @@
 # ReWear - Community Clothing Exchange Platform
 
+## 🚀 **LIVE DEMO**
+**🌐 Deployed Application:** [https://re-wear-git-main-tejraval11s-projects.vercel.app/](https://re-wear-git-main-tejraval11s-projects.vercel.app/)
+
+## 📹 **VIDEO WALKTHROUGH**
+**[🎥 Watch Full Demo Video](https://www.loom.com/share/63324c46e1354dcfafc1c1465ab01019)**
+
+---
+
 A sustainable fashion platform that enables users to exchange unused clothing through direct swaps or a point-based redemption system. Built with Next.js 14, TypeScript, Prisma, and PostgreSQL.
 
 ## 🌱 Mission
