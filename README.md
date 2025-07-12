@@ -6,6 +6,20 @@
 ## 📹 **VIDEO WALKTHROUGH**
 **[🎥 Watch Full Demo Video](https://www.loom.com/share/63324c46e1354dcfafc1c1465ab01019)**
 
+## 👨‍💼 **Test Admin Access**
+
+To test the admin functionality, you can use these pre-configured admin credentials:
+
+**Email:** `admin@gmail.com`  
+**Password:** `admin123`
+
+After logging in with these credentials, you will be automatically redirected to the admin dashboard at `/admin` where you can:
+- View platform statistics
+- Moderate items (approve/reject/delete)
+- Manage users
+- Oversee swaps
+- Access all administrative features
+
 ---
 
 A sustainable fashion platform that enables users to exchange unused clothing through direct swaps or a point-based redemption system. Built with Next.js 14, TypeScript, Prisma, and PostgreSQL.
@@ -192,20 +206,6 @@ rewear/
 
 6. **Open your browser**
    Navigate to [http://localhost:3000](http://localhost:3000)
-
-## 👨‍💼 **Test Admin Access**
-
-To test the admin functionality, you can use these pre-configured admin credentials:
-
-**Email:** `admin@gmail.com`  
-**Password:** `admin123`
-
-After logging in with these credentials, you will be automatically redirected to the admin dashboard at `/admin` where you can:
-- View platform statistics
-- Moderate items (approve/reject/delete)
-- Manage users
-- Oversee swaps
-- Access all administrative features
 
 ## 📡 API Endpoints
 
